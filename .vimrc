@@ -30,6 +30,9 @@ nnoremap <leader>et :.!hexp<CR>
 " Map <leader>f to open the fuzzy file finder
 nnoremap <leader>f :Files<CR>
 
+" Map <leader>g to search files via ack/ag
+nnoremap <leader>g :Ack<Space>
+
 " Map <leader>t to run Elixir tests
 nnoremap <leader>t :!clear && mix test<CR>
 
@@ -97,6 +100,11 @@ au BufRead,BufNewFile mix.lock set filetype=elixir
 " 3. **Group by purpose**:
 "    - Use logical groupings for mappings, such as `<leader>f` for file-related actions, `<leader>b` for buffers, etc.
 "
+
+" Switches from ack to ag.
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 call plug#begin()
 
